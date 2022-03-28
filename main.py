@@ -25,4 +25,37 @@ def pol_5010():
     print(len(res))
 
 
-pol_5010()
+# pol_5010()
+def pol_1901():
+    alphabet = "0123456789ABCDEF"
+    evens = "02468ACE"
+    odds = "13579BDF"
+    count = 0
+    for i in itertools.permutations(alphabet, r=3):
+        word = ''.join(i)
+        if word[0] != '0' and (word[0] in evens and word[1] in odds and word[2] in evens or
+                               word[0] in odds and word[1] in evens and word[2] in odds):
+            count += 1
+    print(count)
+
+
+# pol_1901()
+
+def pol_4198():
+    alphabet = "КРЫША"
+    glas = "ЫА"
+    sogl = "КРШ"
+    count = 0
+    for l in range(3, 6):
+        for i in itertools.product(alphabet, repeat=l):
+            word = ''.join(i)
+            if (word[0] in sogl and len(set(sogl)&set(word[1:])) == 0) or len(set(word) & set(sogl)) == 0:
+                if word.count(glas[0]) <= 2 and word.count(glas[1]) <= 2:
+                    count += 1
+    print(count)
+
+
+pol_4198()
+# x = "КРЫША"
+# y = "ЕНПШ"
+# print(len(list(x) & list(y)))
